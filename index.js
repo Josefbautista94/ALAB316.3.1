@@ -20,6 +20,12 @@ topMenuEl.style.height = "100%"; //giving it a height of 100%
 topMenuEl.style.backgroundColor = "var(--top-menu-bg)"; // giving it that teal bg color
 topMenuEl.classList.add("flex-around"); // adding a CSS class called "flex-around" to topMenuEl
 
+let subMenuEl = document.getElementById("sub-menu")
+subMenuEl.style.height = "100%"
+subMenuEl.style.backgroundColor = "var(--sub-menu-bg)"
+subMenuEl.classList("flex-around")
+subMenuEl.style.position = "absolute"
+subMenuEl.style.top ="0"
 // for (let i = 0; i < menuLinks.length; i++) { //looping through menusLink
 //   console.log(menuLinks[i]);
 //   let a = document.createElement("a"); // creating an anchor element
@@ -35,3 +41,4 @@ menuLinks.forEach((stuff) => {
   a.textContent = stuff.text; //retriving text value from menu array
   topMenuEl.appendChild(a); //adding the anchor elements to topMenuEl
 });
+
