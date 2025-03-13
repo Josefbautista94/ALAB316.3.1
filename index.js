@@ -32,9 +32,10 @@ topMenuEl.classList.add("flex-around"); // adding a CSS class called "flex-aroun
 let subMenuEl = document.getElementById("sub-menu")
 subMenuEl.style.height = "100%"
 subMenuEl.style.backgroundColor = "var(--sub-menu-bg)"
-subMenuEl.classList("flex-around")
+subMenuEl.classList.add("flex-around")
 subMenuEl.style.position = "absolute"
-subMenuEl.style.top ="0"
+subMenuEl.style.top ="0" // hides the subMenu
+
 // for (let i = 0; i < menuLinks.length; i++) { //looping through menusLink
 //   console.log(menuLinks[i]);
 //   let a = document.createElement("a"); // creating an anchor element
@@ -50,4 +51,11 @@ menuLinks.forEach((stuff) => {
   a.textContent = stuff.text; //retriving text value from menu array
   topMenuEl.appendChild(a); //adding the anchor elements to topMenuEl
 });
+
+
+//Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
+let topMenuLinks =  document.querySelectorAll("#top-menu a") // selects all ellements that match a css selector unlike query selector that only selects the first match
+// querySelectorAll returns a NodeList aka a collection of Elements
+//#top-menu finds the element with the id = "top-menu"
+//a selects all <a> elements links inside of #top-menu 
 
