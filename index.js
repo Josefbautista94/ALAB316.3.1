@@ -1,5 +1,3 @@
-
-
 // Menu data structure
 let menuLinks = [
     { text: 'about', href: '/about' },
@@ -77,6 +75,46 @@ topMenuEl.addEventListener("click", function (event) { // listening for any clic
 
     topMenuLinks.forEach(link => link.classList.remove("active")); // Before adding "active" to the clicked link, remove it from all links to prevent multiple highlights!
 
-    event.target.classList.add("active"); // Adds "active" class to what ever link is being clicked on
+    let clickedOn = event.target // makes life easier
+    clickedOn.classList.add("active"); // Adds "active" class to what ever link is being clicked on
 
+    let linkData = menuLinks.find(link => link.text === clickedOn.textContent) // using .find to loop through each item in the array of items if link.text matches what was clicked on it returns that object
+
+
+    if (linkData && linkData.subLinks) {//If the clicked anchor or item i mean has sub links show the sub menu!
+        subMenuEl.style.top = "100%"; // put top to 100 %
+        buildSubmenu(linkData.subLinks);
+
+    } else {
+        subMenuEl.style.top = "0"; // we'll hide the submenu if no sublinks exist, we'll but the top back to 0
+    }
+
+
+})
+
+function buildSubmenu(subLinks) {
+
+    subMenuEl.innerHTML = "";
+
+    subLinks.forEach(link => {
+        let a = document.createElement('a') // we're creating new anchor elements
+        a.setAttribute("href", link.href);  // setting Href
+        a.textContent = link.text; //setting link to text
+        subMenuEl.appendChild(a); // appending Link to subMenu
+    })
+
+}
+// basically repeating the process from before
+subMenuEl.addEventListener("click", function (event) { 
+    event.preventDefault(); // Just like before for the top menu
+
+    if (!event.target.matches("a")) return; // Ignore non-links
+
+    console.log("Submenu item clicked:", event.target.textContent); // yay
+
+    subMenuEl.style.top = "0"; // Hides submenu
+
+    topMenuLinks.forEach(link => link.classList.remove("active")); // Remove active from main menu
+
+    mainEl.innerHTML = `<h1>${event.target.textContent}</h1>`; // Update main <h1>
 })
