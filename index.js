@@ -116,5 +116,5 @@ subMenuEl.addEventListener("click", function (event) {
 
     topMenuLinks.forEach(link => link.classList.remove("active")); // Remove active from main menu
 
-    mainEl.innerHTML = `<h1>${event.target.textContent}</h1>`; // Update main <h1>
+    mainEl.innerHTML = `<h1>${event.target.textContent}</h1>`; // Update mainEL html content <h1>
 })
