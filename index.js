@@ -89,7 +89,10 @@ topMenuEl.addEventListener("click", function (event) { // listening for any clic
         subMenuEl.style.top = "0"; // we'll hide the submenu if no sublinks exist, we'll but the top back to 0
     }
 
-
+if(clickedOn.textContent=== "about"){
+    mainEl.innerHTML = `<h1>${clickedOn.textContent}</h1>`;
+    subMenuEl.style.top = 0;
+}
 })
 
 function buildSubmenu(subLinks) {
